@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import CommnetApp from './CommentApp'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<CommnetApp />, document.getElementById('root'));
 registerServiceWorker();
