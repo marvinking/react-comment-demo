@@ -6,9 +6,21 @@ import React, { Component } from 'react'
 
 class CommentList extends Component {
   render () {
+    const comments = [
+      {username: 'Jerry', content: 'Hello'},
+      {username: 'Tomy', content: 'World'},
+      {username: 'Lucy', content: 'Good'}
+    ]
+
     return (
       <div>
-        commentList
+        {comments.map((comment, index) => {
+          return (
+            <div key={index}>
+              {comment.username}: {comment.content}
+            </div>
+          )
+        })}
       </div>
     )
   }
