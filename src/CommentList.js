@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from 'react'
+import Comment from './Comment'
 
 class CommentList extends Component {
   render () {
@@ -14,13 +15,7 @@ class CommentList extends Component {
 
     return (
       <div>
-        {comments.map((comment, index) => {
-          return (
-            <div key={index}>
-              {comment.username}: {comment.content}
-            </div>
-          )
-        })}
+        {comments.map((comment, index) => <Comment key={index} comment={comment} />)}
       </div>
     )
   }
