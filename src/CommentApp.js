@@ -14,6 +14,25 @@ class CommentApp extends Component {
     }
   }
 
+  componentWillMount () {
+    this._loadComments()
+  }
+
+  // 加载已存评论列表
+  _loadComments () {
+    let comments = localStorage.getItem('comments')
+    if (comments) {
+      comments = JSON.parse(comments)
+      this.setState({ comments })
+    }
+  }
+
+  // 保存评论列表
+  _saveComments (comments) {
+    localStorage.setItem('comments', JSON.stringify(comments))
+  }
+
+
   handleSubmitComment (comment) {
     if (!comment) return
     if (!comment.userName) return alert('请输入用户名')
@@ -23,6 +42,7 @@ class CommentApp extends Component {
     this.setState({
       comments: this.state.comments
     })
+    this._saveComments(this.state.comments)
   }
 
   render () {
