@@ -3,16 +3,21 @@
  */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Comment extends Component {
+  static propTypes = {
+    comment: PropTypes.object.isRequired
+  }
+
   render () {
-    let {userName, content} = this.props.comment
+    const { comment } = this.props
     return (
       <div className='comment'>
         <div className="comment-user">
-          <span>{userName} :</span>&nbsp;
+          <span>{comment.userName} :</span>&nbsp;
         </div>
-        <p>{content}</p>
+        <p>{comment.content}</p>
       </div>
     )
   }
