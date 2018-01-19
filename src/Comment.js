@@ -38,7 +38,13 @@ class Comment extends Component {
   }
 
   _getProcessedContent (content) {
-    return content.replace(/`([\S\s]+?)`/g, '<code>$1</code>')
+    return content
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;")
+      .replace(/`([\S\s]+?)`/g, '<code>$1</code>')
   }
 
   handleDeleteComment () {
