@@ -18,6 +18,27 @@ class CommentInput extends Component {
     }
   }
 
+  componentWillMount () {
+    this._loadUserName()
+  }
+
+  componentDidMount () {
+    this.textarea.focus()
+  }
+
+  // 如果localStorage中存在userName，则将userName取出来加载到用户名输入框中
+  _loadUserName () {
+    let userName = localStorage.getItem('userName')
+    if (userName) {
+      this.setState({ userName })
+    }
+  }
+
+  // 将用户名保存到localStorage中
+  _saveUserName (userName) {
+    localStorage.setItem('userName', userName)
+  }
+
   handleUsernameChange (e) {
     this.setState({
       userName: e.target.value
@@ -40,29 +61,8 @@ class CommentInput extends Component {
     })
   }
 
-  // 如果localStorage中存在userName，则将userName取出来加载到用户名输入框中
-  _loadUserName () {
-    let userName = localStorage.getItem('userName')
-    if (userName) {
-      this.setState({ userName })
-    }
-  }
-
-  componentWillMount () {
-    this._loadUserName()
-  }
-
-  // 将用户名保存到localStorage中
-  _saveUserName (userName) {
-    localStorage.setItem('userName', userName)
-  }
-
   handleUsernameBlur (e) {
     this._saveUserName(e.target.value)
-  }
-
-  componentDidMount () {
-    this.textarea.focus()
   }
 
   render () {
