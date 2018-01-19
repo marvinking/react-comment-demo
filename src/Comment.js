@@ -19,7 +19,13 @@ class Comment extends Component {
     const timeInterval = (+Date.now() - comment.createdAt) / 1000
     this.setState({
       timeString: timeInterval > 60
-        ? `${Math.round(timeInterval / 60)} 分钟前`
+        ? (timeInterval / 60 > 60
+          ? (timeInterval / 60 / 60 > 24
+              ? `${Math.round(timeInterval / 60 / 60 / 24)} 天前`
+              : `${Math.round(timeInterval / 60 / 60)} 小时前`
+            )
+          : `${Math.round(timeInterval / 60)} 分钟前`
+        )
         : `${Math.round(Math.max(timeInterval, 1))} 秒前`
     })
   }
