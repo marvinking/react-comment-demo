@@ -63,7 +63,7 @@ class Comment extends Component {
     return (
       <div className='comment'>
         <div className="comment-user">
-          <span>{comment.userName} :</span>&nbsp;
+          <span className="comment-username">{comment.userName} :</span>&nbsp;
         </div>
         <p dangerouslySetInnerHTML={{
           __html: this._getProcessedContent(comment.content)
